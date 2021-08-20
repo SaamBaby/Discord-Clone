@@ -2,10 +2,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { Redirect } from "react-router-dom";
 import { auth, db } from "../../firebase";
-import ServerIcon from "./ServerIcon";
+import ServerIcon from "../common/ServerIcon";
 import { ChevronDownIcon, PlusIcon } from "@heroicons/react/outline";
-import { MicrophoneIcon, PhoneIcon, CogIcon } from "@heroicons/react/solid";
+import { MicrophoneIcon, PhoneIcon, CogIcon } from "@heroicons/react/outline";
 import Channel from "./Channel";
+import Chat from "./Chat";
 
 function Home() {
   const [user] = useAuthState(auth);
@@ -69,6 +70,36 @@ function Home() {
               ))}
             </div>
           </div>
+          <div className="bg-[#292b2f] p-2 flex justify-between space-x-8">
+            <div className="flex items-center space-x-3 ">
+              <img
+                className="rounded-full h-10 "
+                src={user?.photoURL}
+                alt=""
+                onClick={() => auth.signOut()}
+              />
+              <h2 className=" text-white text-xs font-medium">
+                {user?.displayName}
+                <span className="text-[#b9bbbe] block">
+                  #{user?.uid.substring(0, 4)}
+                </span>
+              </h2>
+            </div>
+            <div className="text-gray-400 flex items-center">
+              <div className="hover:bg-[#3a3c43] p-2 rounded-md">
+                <MicrophoneIcon className=" h-5 icon" />
+              </div>
+              <div className="hover:bg-[#3a3c43] p-2 rounded-md">
+                <PhoneIcon className=" h-5 icon" />
+              </div>
+              <div className="hover:bg-[#3a3c43] p-2 rounded-md">
+                <CogIcon className=" h-5 icon" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-[#36393f] flex-grow">
+          <Chat />
         </div>
       </div>
     </>
