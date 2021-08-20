@@ -11,4 +11,8 @@
     .server-default {
         @apply h-12 bg-discord_server_bg flex justify-center items-center cursor-pointer transition-all duration-150 ease-out;
     }
+
+    .icon {
+        @apply h-6 text-[#b9bbbe] cursor-pointer;
+    }
 }
