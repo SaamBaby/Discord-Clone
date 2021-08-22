@@ -84,7 +84,7 @@ function Chat() {
           <div className="bg-[#202225] text-xs p-1 rounded-md flex  items-center">
             <input
               type="text"
-              placeHolder="Search"
+              placeholder="Search"
               className="bg-transparent focus:outline-none  text-white pl-1
                 placeholder-[#72767d]"
             />
@@ -99,9 +99,9 @@ function Chat() {
         </div>
       </header>
       <main className=" flex-grow overflow-y-scroll scrollbar-hide">
-        ({/* Self Closing div */}
+        {/* Self Closing div */}
         {messages?.docs.map((doc) => {
-          const { message, timestamp, name, photoURL, email } = doc.data();
+          const { message, timestamp, name, photoUrl, email } = doc.data();
           return (
             <Message
               key={doc.id}
@@ -110,11 +110,11 @@ function Chat() {
               timestamp={timestamp}
               name={name}
               email={email}
-              photoURL={photoURL}
+              photoURL={photoUrl}
             />
           );
         })}
-        <div ref={chatRef} className="pb-16"></div>)
+        <div ref={chatRef} className="pb-16"></div>
       </main>
       <div className="flex items-center p-2.5 bg-[#40444b] mx-5 mb-7 rounded-lg">
         <PlusCircleIcon className="icon  hover: text-[#dcddde]" />
@@ -124,7 +124,7 @@ function Chat() {
             type="text"
             ref={inputRef}
             disabled={!channelId}
-            placeHolder={
+            placeholder={
               channelId ? `Message #${channelName}` : "Select a channel"
             }
           />
